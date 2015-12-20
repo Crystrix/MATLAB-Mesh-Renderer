@@ -8,10 +8,11 @@
 % clc
 cmd1='mex -O -largeArrayDims -DA64BITS renderer.cpp depth.cpp Engine.cpp EngineOSG.cpp util.cpp -lOpenGL32 -lglu32 -losg -losgViewer -losgDB -losgGA -losgUtil -lOpenThreads';
 
-libpath=fullfile('C:\OSG','lib');
-incpath=fullfile('C:\OSG','include');
+libpath=fullfile('C:\lib\OpenSceneGraph-3.4.0\OpenSceneGraph\build','lib');
+incpath1=fullfile('C:\lib\OpenSceneGraph-3.4.0\OpenSceneGraph\','include');
+incpath2=fullfile('C:\lib\OpenSceneGraph-3.4.0\OpenSceneGraph\build','include');
 
-cmd=[cmd1 sprintf(' -L%s -I%s',libpath,incpath)];
+cmd=[cmd1 sprintf(' -L%s -I%s -I%s',libpath,incpath1,incpath2)];
 
 disp('Executing:');
 fprintf('%s\n',cmd);

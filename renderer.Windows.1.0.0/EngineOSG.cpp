@@ -114,11 +114,14 @@ public:
 
 	// This method gets called for every node in the scene graph.
 	virtual void apply(osg::Geode& node) {
-		const osg::Geode::DrawableList dl = node.getDrawableList();
-		osg::Geode::DrawableList::const_iterator cii;
-		for (cii = dl.begin(); cii != dl.end(); cii++) {
-			osg::ref_ptr<osg::Drawable> d = *cii;
-			osg::Geometry *g = d->asGeometry();
+		//const osg::Geode::DrawableList dl = node.getDrawableList();
+		//osg::Geode::DrawableList::const_iterator cii;
+       
+		//for (cii = dl.begin(); cii != dl.end(); cii++) {
+		for (unsigned int i = 0; i <  node.getNumDrawables(); i++) {
+            //osg::ref_ptr<osg::Drawable> d = *cii;
+			osg::ref_ptr<osg::Drawable> d = node.getDrawable(i);
+            osg::Geometry *g = d->asGeometry();
 			if (g != 0) {
 				try {
 					osg::Geometry::PrimitiveSetList psl = g->getPrimitiveSetList();
